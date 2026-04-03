@@ -192,6 +192,7 @@ Just like Phase 2, the review panel is **domain-specific and dynamically generat
 - Mix code reviewers with user-perspective reviewers where appropriate
 - If a running dev server exists, some reviewers should interact with the actual product via browser
 - Each reviewer gets access rules (can they read code? only use the product? both?)
+- **Balance measurable and subjective criteria.** Panels naturally skew toward things that are easy to score (correctness, compliance, performance) and away from things that require taste (aesthetics, emotional impact, delight). If the output has a subjective dimension that matters, make sure someone on the panel is optimizing for it — not just checking boxes.
 
 **Example review panel for a CLI tool:**
 - **Code quality reviewer**: Reads source code. Checks architecture, error handling, test coverage.
@@ -348,6 +349,7 @@ Go through every "strength" flagged by reviewers for losing variants:
 | Documenting insights "for later" | "Later" never comes — insights rot in backlogs | Incorporate improvements NOW in the synthesis phase |
 | Over-synthesizing | Frankensteining the winner into a mess | Each incorporation must be justified and approved |
 | Skipping user approval | User should see panels and synthesis plan before execution | Present and get approval at every gate |
+| All-measurable review panels | Panels skew toward checkable criteria (correctness, compliance) and miss subjective qualities (taste, feel, delight) | Ensure the panel covers both measurable and subjective dimensions |
 
 ## Red Flags — STOP and Adjust
 
