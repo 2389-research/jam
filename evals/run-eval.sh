@@ -132,15 +132,20 @@ run_combination() {
     local prompt_template
     prompt_template=$(approach_config "$approach_file" "prompt_template")
 
-    # Substitute task prompt into template
+    # Substitute task prompt into template (using Python — sed can't handle multiline)
     local full_prompt
-    full_prompt=$(echo "$prompt_template" | sed "s|{task_prompt}|${task_prompt}|")
+    full_prompt=$(python3 -c "
+import sys
+template = sys.argv[1]
+task = sys.argv[2]
+print(template.replace('{task_prompt}', task))
+" "$prompt_template" "$task_prompt")
 
     # Save prompt for debugging
     echo "$full_prompt" > "${output_dir}/prompt.txt"
 
-    # Build claude command
-    local -a claude_args=(
+    # Build claude flags
+    local -a claude_flags=(
         --print
         --output-format text
         --max-turns "$MAX_TURNS"
@@ -150,24 +155,29 @@ run_combination() {
     # Check if approach needs a local plugin dir
     local plugin_dir
     if plugin_dir=$(approach_config "$approach_file" "plugin_dir" 2>/dev/null); then
-        # Resolve relative to project root
         if [[ "$plugin_dir" == "." ]]; then
             plugin_dir="$PROJECT_ROOT"
         fi
-        claude_args+=(--plugin-dir "$plugin_dir")
+        claude_flags+=(--plugin-dir "$plugin_dir")
+    fi
+
+    # Check if approach wants skills disabled (baseline)
+    local disable_skills
+    if disable_skills=$(approach_config "$approach_file" "disable_skills" 2>/dev/null); then
+        if [[ "$disable_skills" == "true" ]]; then
+            claude_flags+=(--disable-slash-commands)
+        fi
     fi
 
     log "  Prompt: $(echo "$full_prompt" | head -1)"
     log "  Working dir: ${output_dir}/project"
     log "  Log: ${log_file}"
 
-    # Run claude
+    # Run claude (unset CLAUDECODE to allow nested invocation, cd to project dir)
     local start_time
     start_time=$(date +%s)
 
-    if $CLAUDE_CMD "${claude_args[@]}" \
-        --cwd "${output_dir}/project" \
-        "$full_prompt" \
+    if (unset CLAUDECODE; cd "${output_dir}/project" && $CLAUDE_CMD "${claude_flags[@]}" "$full_prompt") \
         > "$log_file" 2>&1; then
         local end_time
         end_time=$(date +%s)
@@ -239,13 +249,12 @@ Then provide:
 IMPORTANT: Be calibrated. A 3 means adequate. Don't inflate.
 Reserve 5 for genuinely impressive work."
 
-    if $CLAUDE_CMD --print \
+    if (unset CLAUDECODE; cd "${output_dir}/project" && $CLAUDE_CMD --print \
         --output-format text \
         --max-turns 20 \
         --dangerously-skip-permissions \
         --disable-slash-commands \
-        --cwd "${output_dir}/project" \
-        "$eval_prompt" \
+        "$eval_prompt") \
         > "$eval_file" 2>&1; then
         success "Evaluated: ${task_name} × ${approach_name}"
     else
@@ -313,11 +322,11 @@ Create a comparison table and analysis:
 
 Be honest. If simpler approaches won, say so."
 
-    if $CLAUDE_CMD --print \
+    if (unset CLAUDECODE; $CLAUDE_CMD --print \
         --output-format text \
         --max-turns 10 \
         --disable-slash-commands \
-        "$compare_prompt" \
+        "$compare_prompt") \
         > "$comparison_file" 2>&1; then
         success "Comparison written: ${comparison_file}"
     else
