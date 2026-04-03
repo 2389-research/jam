@@ -3,21 +3,14 @@
 
 # Approach: Straight Prompt
 
-## Description
+No skill. Just the raw task prompt.
 
-No skill guidance. The agent receives the task prompt directly and does whatever comes naturally. This is the baseline.
+## Config
 
-## Skill Context
+skill: none
+prompt_template: |
+  {task_prompt}
 
-None. The agent prompt is just the task prompt.
-
-## Agent Instructions
-
-```
-You are building a project from scratch. Here is what to build:
-
-{task_prompt}
-
-Build this project completely. Write all code, tests, and any necessary configuration.
-When you're done, make sure tests pass and the project works end-to-end.
-```
+  Build this project completely in the current directory.
+  Write all code, tests, and any necessary configuration.
+  When you're done, make sure tests pass and the project works end-to-end.
