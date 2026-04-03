@@ -1,0 +1,6 @@
+{
+  "name": "iron-chef",
+  "description": "Parallel exploration framework that uses diverse perspective panels for both generating approaches and evaluating implementations, then synthesizes the best insights from all variants into the winner.",
+  "version": "0.1.0",
+  "commands": []
+}
