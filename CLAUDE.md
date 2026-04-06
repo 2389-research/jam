@@ -10,7 +10,7 @@ Jam is a parallel exploration framework that uses diverse perspective panels at 
 
 | Skill | Triggers | Description |
 |-------|----------|-------------|
-| `jam:jam` | Build/create/implement requests, "jam", "diverse approaches", indecision signals | Full Jam workflow: diverse panels → parallel implementation → panel evaluation → synthesis |
+| `jam:jam` | "jam on X", "let's jam", "jam session", build/create/implement requests, "diverse approaches", indecision signals | Full Jam workflow: diverse panels → parallel implementation → panel evaluation → synthesis |
 
 ## The Flow
 

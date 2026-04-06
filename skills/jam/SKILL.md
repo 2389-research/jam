@@ -1,6 +1,6 @@
 ---
 name: jam
-description: Use when building features, creating projects, or implementing anything where multiple approaches could work. Brings diverse perspectives to both design exploration and evaluation, then synthesizes learnings from all variants into the winner. Triggers on "build", "create", "implement", "jam", "diverse approaches", "explore options".
+description: Use when building features, creating projects, or implementing anything where multiple approaches could work. Brings diverse perspectives to both design exploration and evaluation, then synthesizes learnings from all variants into the winner. Triggers on "jam on", "jam on this", "let's jam", "can we jam", "jam this", "jam session", "build", "create", "implement", "diverse approaches", "explore options".
 ---
 
 # Jam
