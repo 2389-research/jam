@@ -30,7 +30,7 @@ usage() {
     cat <<'USAGE'
 Usage: run-eval.sh [OPTIONS]
 
-Run Iron Chef comparative evaluation suite.
+Run Jam comparative evaluation suite.
 
 OPTIONS:
     --task TASK          Run only tasks matching TASK (substring match)
@@ -45,7 +45,7 @@ OPTIONS:
 EXAMPLES:
     run-eval.sh                                    # Run everything
     run-eval.sh --task 01-pomodoro-cli             # One task, all approaches
-    run-eval.sh --approach iron-chef               # One approach, all tasks
+    run-eval.sh --approach jam                      # One approach, all tasks
     run-eval.sh --task 01 --approach straight      # One combination
     run-eval.sh --eval-only                        # Re-evaluate existing outputs
 USAGE
@@ -158,7 +158,7 @@ print(template.replace('{task_prompt}', task))
         if [[ "$plugin_dir" == "." ]]; then
             plugin_dir="$PROJECT_ROOT"
         fi
-        claude_flags+=(--plugin-dir "$plugin_dir")
+        claude_flags+=("--plugin-dir=${plugin_dir}")
     fi
 
     # Check if approach wants skills disabled (baseline)
@@ -313,10 +313,10 @@ Create a comparison table and analysis:
 2. Calculate overall averages
 3. Name the winner
 4. Answer:
-   - What did more structured approaches (omakase, iron-chef) do better?
+   - What did more structured approaches (omakase, jam) do better?
    - What did simpler approaches (straight-prompt, brainstorming) do better?
-   - Where did Iron Chef's synthesis visibly improve the output?
-   - Was the overhead of Iron Chef justified by the quality delta?
+   - Where did Jam's synthesis visibly improve the output?
+   - Was the overhead of Jam justified by the quality delta?
    - Factor in build time — was slower approach worth the wait?
    - What surprised you?
 

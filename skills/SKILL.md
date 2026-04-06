@@ -1,10 +1,10 @@
 ---
-name: iron-chef-router
-description: Use when building features, creating projects, or implementing anything where multiple approaches could work. Triggers on "build", "create", "implement", "iron chef", "diverse approaches", "explore options".
+name: jam-router
+description: Use when building features, creating projects, or implementing anything where multiple approaches could work. Triggers on "build", "create", "implement", "jam", "diverse approaches", "explore options".
 ---
 
-# Iron Chef
+# Jam
 
 Parallel exploration powered by diverse perspectives.
 
-**Invoke `iron-chef:iron-chef` for the full workflow.**
+**Invoke `jam:jam` for the full workflow.**

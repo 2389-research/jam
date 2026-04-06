@@ -1,17 +1,17 @@
-# ABOUTME: Approach definition using the iron-chef skill.
-# ABOUTME: Agent invokes the real iron-chef skill with diverse panels + synthesis.
+# ABOUTME: Approach definition using the jam skill.
+# ABOUTME: Agent invokes the real jam skill with diverse panels + synthesis.
 
-# Approach: Iron Chef
+# Approach: Jam
 
-Uses the real iron-chef:iron-chef skill via slash command invocation.
+Uses the real jam:jam skill via slash command invocation.
 Loaded via --plugin-dir pointing to the local plugin directory.
 
 ## Config
 
-skill: /iron-chef:iron-chef
+skill: /jam:jam
 plugin_dir: .
 prompt_template: |
-  /iron-chef:iron-chef
+  /jam:jam
 
   {task_prompt}
 
@@ -19,7 +19,7 @@ prompt_template: |
   decisions where the user would normally provide input. Approve panels,
   variants, and synthesis plans yourself and continue through all phases.
 
-  Follow ALL Iron Chef phases: diverse perspective panel for slot generation,
+  Follow ALL Jam phases: diverse perspective panel for slot generation,
   parallel implementation, review panel evaluation, and synthesis of best
   insights into the winner.
 

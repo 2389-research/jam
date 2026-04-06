@@ -1,7 +1,7 @@
 # ABOUTME: Evaluation rubric for comparing approach outputs.
 # ABOUTME: Used by the evaluation panel to score each approach's final output.
 
-# Iron Chef Eval Rubric
+# Jam Eval Rubric
 
 ## How Evaluation Works
 
@@ -60,12 +60,12 @@ After all four approaches are evaluated for a task, produce a comparison:
 ```
 ## Task: {task_name}
 
-| Dimension | Straight | Brainstorm | Omakase | Iron Chef |
-|-----------|----------|------------|---------|-----------|
-| Dim 1     | X/5      | X/5        | X/5     | X/5       |
-| Dim 2     | X/5      | X/5        | X/5     | X/5       |
-| ...       |          |            |         |           |
-| **Overall** | X.X    | X.X        | X.X     | X.X       |
+| Dimension | Straight | Brainstorm | Omakase | Jam |
+|-----------|----------|------------|---------|-----|
+| Dim 1     | X/5      | X/5        | X/5     | X/5 |
+| Dim 2     | X/5      | X/5        | X/5     | X/5 |
+| ...       |          |            |         |     |
+| **Overall** | X.X    | X.X        | X.X     | X.X |
 
 ### Winner: {approach}
 ### Why: {1-2 sentences}
@@ -73,6 +73,6 @@ After all four approaches are evaluated for a task, produce a comparison:
 ### Interesting Patterns:
 - {What did more structured approaches do better?}
 - {What did simpler approaches do better?}
-- {Where did Iron Chef's synthesis actually improve the output?}
-- {Was the overhead of Iron Chef justified by the quality delta?}
+- {Where did Jam's synthesis actually improve the output?}
+- {Was the overhead of Jam justified by the quality delta?}
 ```

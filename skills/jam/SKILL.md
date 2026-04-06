@@ -1,24 +1,24 @@
 ---
-name: iron-chef
-description: Use when building features, creating projects, or implementing anything where multiple approaches could work. Brings diverse perspectives to both design exploration and evaluation, then synthesizes learnings from all variants into the winner. Triggers on "build", "create", "implement", "iron chef", "diverse approaches", "explore options".
+name: jam
+description: Use when building features, creating projects, or implementing anything where multiple approaches could work. Brings diverse perspectives to both design exploration and evaluation, then synthesizes learnings from all variants into the winner. Triggers on "build", "create", "implement", "jam", "diverse approaches", "explore options".
 ---
 
-# Iron Chef
+# Jam
 
-Parallel exploration framework powered by diverse perspectives. Instead of one mind generating options and picking a winner, Iron Chef dispatches independent agents with different worldviews to both **propose approaches** and **evaluate implementations**, then **synthesizes the best of everything** into the final result.
+Parallel exploration framework powered by diverse perspectives. Instead of one mind generating options and picking a winner, Jam dispatches independent agents with different worldviews to both **propose approaches** and **evaluate implementations**, then **synthesizes the best of everything** into the final result.
 
-**The Iron Chef was all of us together.**
+**The jam was all of us together.**
 
 ## Why This Exists
 
-A single agent generating "multiple approaches" is still one mind imagining what different people would think. The perspectives cluster, biases leak through, and the agent converges to its own preference. Iron Chef makes diversity real by dispatching independent agents who reason separately.
+A single agent generating "multiple approaches" is still one mind imagining what different people would think. The perspectives cluster, biases leak through, and the agent converges to its own preference. Jam makes diversity real by dispatching independent agents who reason separately.
 
 ## When to Use
 
 - "Build X", "Create Y", "Implement Z" — any build/create request where approaches vary
 - Architectural decisions with genuine trade-offs
 - User shows indecision ("not sure", "either works", "you pick")
-- Explicitly requested ("iron chef", "diverse approaches", "explore options")
+- Explicitly requested ("jam", "diverse approaches", "explore options")
 
 ## When NOT to Use
 
@@ -29,7 +29,7 @@ A single agent generating "multiple approaches" is still one mind imagining what
 ## The Flow
 
 ```dot
-digraph ironchef {
+digraph jam {
   rankdir=TB;
   "Build/Create request" -> "Quick context (1-2 questions)";
   "Quick context (1-2 questions)" -> "Identify architectural slots";
@@ -61,7 +61,7 @@ Only architectural decisions become slots. Cap at 2-3 slots to avoid combinatori
 
 ## Phase 2: Diverse Perspective Panel (Slot Generation)
 
-**This is what makes Iron Chef different from plain brainstorming.**
+**This is what makes Jam different from plain brainstorming.**
 
 ### How to Build the Panel
 
@@ -141,7 +141,7 @@ For each approved variant:
 
 1. Create a git worktree per variant:
    ```bash
-   git worktree add .worktrees/variant-<slug> -b ironchef/<feature>/variant-<slug>
+   git worktree add .worktrees/variant-<slug> -b jam/<feature>/variant-<slug>
    ```
 2. Ensure `.worktrees/` is in `.gitignore`
 
@@ -224,7 +224,7 @@ Each reviewer reports:
 Compile findings into a cross-variant comparison:
 
 ```markdown
-## Iron Chef Evaluation: <feature>
+## Jam Evaluation: <feature>
 
 ### Variant Scorecard
 
@@ -257,7 +257,7 @@ Compile findings into a cross-variant comparison:
 
 ## Phase 5: Synthesis
 
-**This is the phase that makes Iron Chef more than a competition.**
+**This is the phase that makes Jam more than a competition.**
 
 The losing variants are not waste — they are learning. The review panels identified what EACH variant did well. Now fold the best insights into the winner.
 
@@ -287,7 +287,7 @@ Go through every "strength" flagged by reviewers for losing variants:
 ### Write result.md
 
 ```markdown
-# Iron Chef Results: <feature>
+# Jam Results: <feature>
 
 ## Perspective Panel
 [Who proposed approaches and why]
@@ -313,7 +313,7 @@ Go through every "strength" flagged by reviewers for losing variants:
 | variant-c | Single-binary deploy | Yes | Adopted static linking approach |
 | Reviewer X | Missing input validation | Yes | Added to all endpoints |
 
-## The Iron Chef Was All of Us Together
+## The Jam Was All of Us Together
 [Brief narrative of how the final result is better than any single variant]
 ```
 
@@ -323,7 +323,7 @@ Go through every "strength" flagged by reviewers for losing variants:
 2. **Cleanup loser worktrees:**
    ```bash
    git worktree remove .worktrees/variant-<slug>
-   git branch -D ironchef/<feature>/variant-<slug>
+   git branch -D jam/<feature>/variant-<slug>
    ```
 3. **Finish the winner branch**: merge, PR, or keep as-is (user's choice)
 
@@ -353,7 +353,7 @@ Go through every "strength" flagged by reviewers for losing variants:
 
 ## Red Flags — STOP and Adjust
 
-If you catch yourself doing any of these, you're bypassing Iron Chef's value:
+If you catch yourself doing any of these, you're bypassing Jam's value:
 
 - Generating all variant approaches yourself instead of dispatching panel agents
 - Evaluating from a single perspective instead of dispatching review agents

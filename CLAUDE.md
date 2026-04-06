@@ -1,16 +1,16 @@
-# Iron Chef Plugin
+# Jam Plugin
 
 ## Overview
 
-Iron Chef is a parallel exploration framework that uses diverse perspective panels at two key moments: generating approaches and evaluating implementations. After picking a winner, it synthesizes the best insights from ALL variants into the final result.
+Jam is a parallel exploration framework that uses diverse perspective panels at two key moments: generating approaches and evaluating implementations. After picking a winner, it synthesizes the best insights from ALL variants into the final result.
 
-**The Iron Chef was all of us together.**
+**The jam was all of us together.**
 
 ## Skills
 
 | Skill | Triggers | Description |
 |-------|----------|-------------|
-| `iron-chef:iron-chef` | Build/create/implement requests, "iron chef", "diverse approaches", indecision signals | Full Iron Chef workflow: diverse panels → parallel implementation → panel evaluation → synthesis |
+| `jam:jam` | Build/create/implement requests, "jam", "diverse approaches", indecision signals | Full Jam workflow: diverse panels → parallel implementation → panel evaluation → synthesis |
 
 ## The Flow
 
