@@ -6,3 +6,11 @@ evals/results/*/
 
 # Worktrees created during jam runs
 .worktrees/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
