@@ -1,6 +1,6 @@
 {
   "name": "jam",
-  "description": "Parallel exploration framework that uses diverse perspective panels for both generating approaches and evaluating implementations, then synthesizes the best insights from all variants into the winner.",
+  "description": "Structured multi-approach exploration using parallel perspective panels to generate, implement, and evaluate distinct variants, synthesizing the best insights from all into the winner.",
   "version": "1.0.0",
   "author": {
     "name": "2389 Research"

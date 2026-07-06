@@ -45,7 +45,6 @@ CLAUDE.md                    Agent-facing plugin guide (Claude Code auto-loads)
 README.md                    Human-facing docs
 AGENTS.md                    This file
 skills/
-  SKILL.md                   Router skill (points at jam:jam)
   jam/SKILL.md               The full Jam workflow (source of truth)
 evals/                       Comparative eval harness
   approaches/                One file per approach being compared

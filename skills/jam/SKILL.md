@@ -1,6 +1,6 @@
 ---
 name: jam
-description: Use when building features, creating projects, or implementing anything where multiple approaches could work. Brings diverse perspectives to both design exploration and evaluation, then synthesizes learnings from all variants into the winner. Triggers on "jam on", "jam on this", "let's jam", "can we jam", "jam this", "jam session", "build", "create", "implement", "diverse approaches", "explore options".
+description: Structured multi-approach exploration using parallel perspective panels to generate, implement, and evaluate distinct variants, then synthesizes the best insights from all into the winner. Use when multiple approaches are genuinely viable and the choice is unclear, the user is indecisive or explicitly wants diverse perspectives, or the user says "jam on", "let's jam", or "jam session".
 ---
 
 # Jam
@@ -9,13 +9,8 @@ Parallel exploration framework powered by diverse perspectives. Instead of one m
 
 **The jam was all of us together.**
 
-## Why This Exists
-
-A single agent generating "multiple approaches" is still one mind imagining what different people would think. The perspectives cluster, biases leak through, and the agent converges to its own preference. Jam makes diversity real by dispatching independent agents who reason separately.
-
 ## When to Use
 
-- "Build X", "Create Y", "Implement Z" — any build/create request where approaches vary
 - Architectural decisions with genuine trade-offs
 - User shows indecision ("not sure", "either works", "you pick")
 - Explicitly requested ("jam", "diverse approaches", "explore options")
@@ -28,23 +23,19 @@ A single agent generating "multiple approaches" is still one mind imagining what
 
 ## The Flow
 
-```dot
-digraph jam {
-  rankdir=TB;
-  "Build/Create request" -> "Quick context (1-2 questions)";
-  "Quick context (1-2 questions)" -> "Identify architectural slots";
-  "Identify architectural slots" -> "Generate diverse perspective panel";
-  "Generate diverse perspective panel" -> "Dispatch panel agents to propose slot fills";
-  "Dispatch panel agents to propose slot fills" -> "Synthesize into 3-5 distinct variants";
-  "Synthesize into 3-5 distinct variants" -> "Present variants, user approves";
-  "Present variants, user approves" -> "Implement all variants in parallel (worktrees)";
-  "Implement all variants in parallel (worktrees)" -> "Generate review panel for this domain";
-  "Generate review panel for this domain" -> "Review panel evaluates ALL variants";
-  "Review panel evaluates ALL variants" -> "Pick winner based on panel findings";
-  "Pick winner based on panel findings" -> "Synthesize: fold best insights from ALL variants into winner";
-  "Synthesize: fold best insights from ALL variants into winner" -> "Ship the improved winner";
-}
-```
+1. Build/Create request
+2. Quick context (1-2 questions)
+3. Identify architectural slots
+4. Generate diverse perspective panel
+5. Dispatch panel agents to propose slot fills
+6. Synthesize into 3-5 distinct variants
+7. Present variants, user approves
+8. Implement all variants in parallel (worktrees)
+9. Generate review panel for this domain
+10. Review panel evaluates ALL variants
+11. Pick winner based on panel findings
+12. Synthesize: fold best insights from ALL variants into winner
+13. Ship the improved winner
 
 ## Phase 1: Context & Slots
 
@@ -79,12 +70,6 @@ Analyze the domain and generate 3-6 personas with **genuinely different worldvie
 - **Priya, the data hoarder**: Has 50,000 bookmarks across 15 years. Optimizes for search speed, deduplication, and import/export.
 - **Carlos, the ops engineer**: Will deploy this to 200 machines. Optimizes for single-binary distribution, no runtime dependencies, zero config.
 
-**Example — writing a blog post about a developer tool:**
-- **Sam, the skeptical HN commenter**: Has seen 100 tools like this. Optimizes for "why should I care" and "what's actually different."
-- **Jordan, the target user**: Actively has the problem this tool solves. Optimizes for "does this solve MY problem" and "how fast can I try it."
-- **Alex, the technical writer**: Values clarity and structure. Optimizes for scanability, accurate claims, and working examples.
-- **Riley, the busy engineering manager**: Skims everything. Optimizes for "can I forward this to my team with a one-line summary."
-
 ### Dispatch Pattern
 
 Present the panel to the user for approval. They can add, remove, or adjust personas.
@@ -103,25 +88,7 @@ Each agent receives:
 - Instruction to propose their preferred approach for each slot with reasoning
 - **No visibility into other agents' proposals** — independence is critical
 
-### Agent Prompt Structure
-
-```
-You are [NAME], [DESCRIPTION].
-[1-2 sentences about your worldview and what you optimize for.]
-
-A user wants to [PROBLEM DESCRIPTION].
-
-The key architectural decisions are:
-- [SLOT 1]: [options or open-ended]
-- [SLOT 2]: [options or open-ended]
-
-Propose YOUR preferred approach. For each decision:
-1. What you'd choose and why (from YOUR perspective)
-2. What risks you see with other approaches
-3. What you'd want to verify before committing
-
-Be opinionated. Don't hedge. Advocate for what YOU believe is right.
-```
+See [agent prompt template](references/agent-prompt-template.md) for the full prompt structure.
 
 ### Synthesizing Proposals into Variants
 
@@ -221,34 +188,7 @@ Each reviewer reports:
 
 ### Consolidate & Pick Winner
 
-Compile findings into a cross-variant comparison:
-
-```markdown
-## Jam Evaluation: <feature>
-
-### Variant Scorecard
-
-| Criterion | variant-a | variant-b | variant-c |
-|-----------|-----------|-----------|-----------|
-| [Reviewer 1 focus] | findings | findings | findings |
-| [Reviewer 2 focus] | findings | findings | findings |
-| Tests passing | Y/N | Y/N | Y/N |
-
-### Per-Variant Strengths (PRESERVE THESE FOR SYNTHESIS)
-
-**variant-a:** [what reviewers loved]
-**variant-b:** [what reviewers loved]
-**variant-c:** [what reviewers loved]
-
-### Per-Variant Weaknesses
-
-**variant-a:** [what reviewers flagged]
-**variant-b:** [what reviewers flagged]
-**variant-c:** [what reviewers flagged]
-
-### Winner: variant-X
-[Why, based on panel findings]
-```
+Compile findings into a cross-variant comparison. See [scorecard template](references/scorecard.md).
 
 **Elimination rules:**
 - Fails tests → eliminated
@@ -284,38 +224,7 @@ Go through every "strength" flagged by reviewers for losing variants:
 4. Implement the approved improvements in the winner's branch
 5. Run tests again to verify nothing broke
 
-### Write result.md
-
-```markdown
-# Jam Results: <feature>
-
-## Perspective Panel
-[Who proposed approaches and why]
-
-## Variants Explored
-| Variant | Philosophy | Tests | Result |
-|---------|-----------|-------|--------|
-| variant-a | ... | PASS | WINNER |
-| variant-b | ... | PASS | Insights incorporated |
-| variant-c | ... | FAIL | Eliminated |
-
-## Review Panel
-[Who evaluated and their key findings]
-
-## Winner: variant-a
-[Why it won]
-
-## Synthesis: What We Learned From Everyone
-| Source | Insight | Incorporated? | How |
-|--------|---------|---------------|-----|
-| variant-b | Better error messages | Yes | Ported error handling pattern |
-| variant-b | GraphQL subscriptions | No | Over-complex for current needs |
-| variant-c | Single-binary deploy | Yes | Adopted static linking approach |
-| Reviewer X | Missing input validation | Yes | Added to all endpoints |
-
-## The Jam Was All of Us Together
-[Brief narrative of how the final result is better than any single variant]
-```
+Write `result.md` using the [result template](references/result-template.md).
 
 ## Phase 6: Cleanup & Finish
 
