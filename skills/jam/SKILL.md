@@ -70,6 +70,14 @@ Analyze the domain and generate 3-6 personas with **genuinely different worldvie
 - **Priya, the data hoarder**: Has 50,000 bookmarks across 15 years. Optimizes for search speed, deduplication, and import/export.
 - **Carlos, the ops engineer**: Will deploy this to 200 machines. Optimizes for single-binary distribution, no runtime dependencies, zero config.
 
+**Example — writing a blog post about a developer tool:**
+- **Sam, the skeptical HN commenter**: Has seen 100 tools like this. Optimizes for "why should I care" and "what's actually different."
+- **Jordan, the target user**: Actively has the problem this tool solves. Optimizes for "does this solve MY problem" and "how fast can I try it."
+- **Alex, the technical writer**: Values clarity and structure. Optimizes for scanability, accurate claims, and working examples.
+- **Riley, the busy engineering manager**: Skims everything. Optimizes for "can I forward this to my team with a one-line summary."
+
+Two examples, deliberately: jam is not a code-only workflow. The panel for a piece of writing is as domain-specific as the panel for a CLI.
+
 ### Dispatch Pattern
 
 Present the panel to the user for approval. They can add, remove, or adjust personas.

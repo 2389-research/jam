@@ -1,4 +1,4 @@
-Write this file to `docs/plans/<feature>/variants/result.md` at the end of Phase 5.
+Write this file to `docs/plans/<feature>/variants/result.md` at the end of Phase 5. It is the single durable artifact of a jam run — the [scorecard](scorecard.md) is the Phase 4 working comparison that feeds it.
 
 ```markdown
 # Jam Results: <feature>

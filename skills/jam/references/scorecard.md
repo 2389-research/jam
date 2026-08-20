@@ -1,4 +1,4 @@
-Use this format when compiling Phase 4 review findings into `docs/plans/<feature>/variants/result.md`.
+Use this format to compile Phase 4 review findings into the cross-variant comparison you present when picking the winner. This is working output — the strengths captured here feed Phase 5 synthesis and land in `result.md` via the [result template](result-template.md).
 
 ```markdown
 ## Jam Evaluation: <feature>
