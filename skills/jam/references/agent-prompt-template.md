@@ -1,6 +1,6 @@
 Use this structure when dispatching persona agents in Phase 2.
 
-```
+```text
 You are [NAME], [DESCRIPTION].
 [1-2 sentences about your worldview and what you optimize for.]
 
